@@ -1,0 +1,407 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="InitAllApplications" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:f="clr-namespace:Fourier;assembly=Fourier" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
+    <x:Property Name="out_dtMaestraClientes" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="io_dtLogs" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="in_DtCartera" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="out_DtTania" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_DtAS400" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_DtAlkosto" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_DtSAO" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_AjusteSAO" Type="OutArgument(x:Double)" />
+    <x:Property Name="out_Falabella" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_Cencosud" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_Flamingo" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_Colsubsidio" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_TresElefantes" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_ElSI" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_BoolVinculadas" Type="OutArgument(x:Boolean)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1240,2190</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>InitAllApplications_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="50">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>Fourier</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="46">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>Fourier</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="##Business Process Layer##&#xA;Description: Open and initialize application as needed.&#xA;&#xA;Pre Condition: N/A&#xA;Post Condtion: Applications opened" DisplayName="InitAllApplications" sap:VirtualizedContainerService.HintSize="901,1985" sap2010:WorkflowViewState.IdRef="Sequence_34">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ss:SecureString" Name="vSecStrPassEpicor" />
+      <Variable x:TypeArguments="x:String" Name="vStrUserEpicor" />
+      <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="vIENewQueueItems" />
+      <Variable x:TypeArguments="sd:DataTable" Name="vdtMaestra" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="859,51" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch.Try>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,306" sap2010:WorkflowViewState.IdRef="Sequence_36">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke LecturaMaestraClientes workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Init\LecturaMaestraClientes.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_RutaMaestraClientes">[in_Config("vStrMaestraClientes").ToString]</InArgument>
+              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtMaestra">[vdtMaestra]</OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Log workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Logs\Log.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_StrTipoLog">informativo</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_StrNombreProceso">Lectura y validacion maestra clientes</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_StrDescripcionLog">Se realizo lectura y validacion de la maestra de clientes correctamente</InArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_DtLogs">[io_dtLogs]</InOutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_StrRobot">[in_Config("vStrNombreRobot").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ItemProcesss">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Error de nogocio" sap:VirtualizedContainerService.HintSize="376,368" sap2010:WorkflowViewState.IdRef="Sequence_37">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CorreosHTTP workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="CorreosHTTP.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrRobotName">[in_Config("vStrNombreRobot").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrRobotMail">[in_Config("vStrCorreoRobot").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrSubject">Excepción lectura maestra de clientes</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrRecipients">[in_Config("vStrCorreoNotificacionBancos").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrCCRecipients" />
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrCCORecipients" />
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrBodyHTML">["Se le informa que ocurrio la siguiente excepcion al validar la maestra de clientes: "+exception.Message]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrReplyTo" />
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrAttachmentType" />
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrAttachmentName" />
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrPathAttachment" />
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrEndPoint">[in_Config("vStrEndPoint").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrUserName">[in_Config("vStrUserNameAPI").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrPassword">[in_Config("vStrPasswordAPI").ToString]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Log workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Logs\Log.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrTipoLog">informativo</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrNombreProceso">Lectura y validacion maestra clientes</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrDescripcionLog">["Se obtuvo el siguiente error al leer y validar la maestra de clientes: "+exception.Message]</InArgument>
+                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_DtLogs">[io_dtLogs]</InOutArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrRobot">[in_Config("vStrNombreRobot").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ItemProcesss">
+                    <Literal x:TypeArguments="x:String" Value="" />
+                  </InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <Rethrow sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <Assign sap:VirtualizedContainerService.HintSize="859,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="sd:DataTable">[out_dtMaestraClientes]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="sd:DataTable">[vdtMaestra]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" TimeoutMS="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Get Queue Items" FilterStrategy="StartsWith" sap:VirtualizedContainerService.HintSize="859,22" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New" QueueName="Pagos" Result="[vIENewQueueItems]" />
+    <If Condition="[in_TransactionItem is Nothing And vIENewQueueItems.Count=0]" DisplayName="If ¿no hay colas pendientes?" sap:VirtualizedContainerService.HintSize="859,1553" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,1405" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <TryCatch.Try>
+            <Sequence DisplayName="Identificacion pagos" sap:VirtualizedContainerService.HintSize="376,1178" sap2010:WorkflowViewState.IdRef="Sequence_35">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:Boolean" Name="vBoolCORG" />
+                <Variable x:TypeArguments="x:Boolean" Name="vBoolOCNA" />
+                <Variable x:TypeArguments="x:Boolean" Name="vBoolPREP" />
+                <Variable x:TypeArguments="x:Boolean" Name="vBoolVINC" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GROP workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="GROP.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_DtLogs">[io_dtLogs]</InOutArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DtTania">[out_DtTania]</OutArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DtAS400">[out_DtAS400]</OutArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DtAlkosto">[out_DtAlkosto]</OutArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DtSAO">[out_DtSAO]</OutArgument>
+                  <OutArgument x:TypeArguments="x:Double" x:Key="out_AjusteSAO">[out_AjusteSAO]</OutArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_Falabella">[out_Falabella]</OutArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_Cencosud">[out_Cencosud]</OutArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_Flamingo">[out_Flamingo]</OutArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_Colsubsidio">[out_Colsubsidio]</OutArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TresElefantes">[out_TresElefantes]</OutArgument>
+                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_Si">[out_ElSI]</OutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CORG workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="CORG.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="inStrArchivoCORG">[in_Config("vStrPathCORG").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="inStrArchivoPendientesCORG">[in_Config("vStrArchivoPenditesCORG").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="inStrQueueName">[in_Config("OrchestratorQueueName").ToString]</InArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                  <OutArgument x:TypeArguments="x:Boolean" x:Key="out_ColasEnviadas">[vBoolCORG]</OutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <If Condition="[vBoolCORG]" DisplayName="Log Queues CORG" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <f:Log in_ItemProcesss="{x:Null}" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Log_1" in_StrDescripcionLog="Se enviaron colas a orquestador de los pagos a procesar para CORG" in_StrNombreProceso="Validacion de información a procesar CORG" in_StrRobot="[in_Config(&quot;vStrNombreRobot&quot;).ToString]" in_StrTipoLog="[Split(in_Config(&quot;TipoLog&quot;).ToString,&quot;,&quot;)(0)]" io_DtLogs="[io_dtLogs]" />
+                </If.Then>
+                <If.Else>
+                  <f:Log in_ItemProcesss="{x:Null}" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Log_3" in_StrDescripcionLog="No existen pagos a procesar para CORG" in_StrNombreProceso="Validacion de información a procesar CORG" in_StrRobot="[in_Config(&quot;vStrNombreRobot&quot;).ToString]" in_StrTipoLog="[Split(in_Config(&quot;TipoLog&quot;).ToString,&quot;,&quot;)(0)]" io_DtLogs="[io_dtLogs]" />
+                </If.Else>
+              </If>
+              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke OCNA workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="OCNA.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrArchivoOCNA">[in_Config("PathOCNA").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrQueueName">[in_Config("OrchestratorQueueName").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_StrArchivoPendientesOCNAS">[in_Config("ArchivoPendientesOCNA").ToString]</InArgument>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                  <OutArgument x:TypeArguments="x:Boolean" x:Key="out_QueuesOCNA">[vBoolOCNA]</OutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <If Condition="[vBoolOCNA]" DisplayName="Log Queues OCNA" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_3">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <f:Log in_ItemProcesss="{x:Null}" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Log_2" in_StrDescripcionLog="Se enviaron colas a orquestador de los pagos a procesar para OCNA" in_StrNombreProceso="Validacion de información a procesar OCNA" in_StrRobot="[in_Config(&quot;vStrNombreRobot&quot;).ToString]" in_StrTipoLog="[Split(in_Config(&quot;TipoLog&quot;).ToString,&quot;,&quot;)(0)]" io_DtLogs="[io_dtLogs]" />
+                </If.Then>
+                <If.Else>
+                  <f:Log in_ItemProcesss="{x:Null}" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Log_4" in_StrDescripcionLog="No existen pagos a procesar para OCNA" in_StrNombreProceso="Validacion de información a procesar OCNA" in_StrRobot="[in_Config(&quot;vStrNombreRobot&quot;).ToString]" in_StrTipoLog="[Split(in_Config(&quot;TipoLog&quot;).ToString,&quot;,&quot;)(0)]" io_DtLogs="[io_dtLogs]" />
+                </If.Else>
+              </If>
+              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke PREP workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="PREP.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                  <OutArgument x:TypeArguments="x:Boolean" x:Key="out_QueuesPREP">[vBoolPREP]</OutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <If Condition="[vBoolPREP]" DisplayName="Log Queues PREP" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_4">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <f:Log in_ItemProcesss="{x:Null}" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Log_5" in_StrDescripcionLog="Se enviaron colas a orquestador de los pagos a procesar para PREP" in_StrNombreProceso="Validacion de información a procesar PREP" in_StrRobot="[in_Config(&quot;vStrNombreRobot&quot;).ToString]" in_StrTipoLog="[Split(in_Config(&quot;TipoLog&quot;).ToString,&quot;,&quot;)(0)]" io_DtLogs="[io_dtLogs]" />
+                </If.Then>
+                <If.Else>
+                  <f:Log in_ItemProcesss="{x:Null}" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Log_6" in_StrDescripcionLog="No existen pagos a procesar para PREP" in_StrNombreProceso="Validacion de información a procesar PREP" in_StrRobot="[in_Config(&quot;vStrNombreRobot&quot;).ToString]" in_StrTipoLog="[Split(in_Config(&quot;TipoLog&quot;).ToString,&quot;,&quot;)(0)]" io_DtLogs="[io_dtLogs]" />
+                </If.Else>
+              </If>
+              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke VINC workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="VINC.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                  <OutArgument x:TypeArguments="x:Boolean" x:Key="out_QueuesVINC">[vBoolVINC]</OutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <If Condition="[vBoolVINC]" DisplayName="Log Queues VINC" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_5">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <f:Log in_ItemProcesss="{x:Null}" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Log_7" in_StrDescripcionLog="Se enviaron colas a orquestador de los pagos a procesar para VINC" in_StrNombreProceso="Validacion de información a procesar VINC" in_StrRobot="[in_Config(&quot;vStrNombreRobot&quot;).ToString]" in_StrTipoLog="[Split(in_Config(&quot;TipoLog&quot;).ToString,&quot;,&quot;)(0)]" io_DtLogs="[io_dtLogs]" />
+                </If.Then>
+                <If.Else>
+                  <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Boolean">[out_BoolVinculadas]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <f:Log in_ItemProcesss="{x:Null}" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="Log_8" in_StrDescripcionLog="No existen pagos a procesar para VINC" in_StrNombreProceso="Validacion de información a procesar VINC" in_StrRobot="[in_Config(&quot;vStrNombreRobot&quot;).ToString]" in_StrTipoLog="[Split(in_Config(&quot;TipoLog&quot;).ToString,&quot;,&quot;)(0)]" io_DtLogs="[io_dtLogs]" />
+                  </Sequence>
+                </If.Else>
+              </If>
+              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke BPO workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="BPO.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Cartera">[in_DtCartera]</InArgument>
+                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_DtLogs">[io_dtLogs]</InOutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </TryCatch.Try>
+          <TryCatch.Catches>
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ActivityAction x:TypeArguments="s:Exception">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Error informacion CORG" sap:VirtualizedContainerService.HintSize="376,241" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Log workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Logs\Log.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_StrTipoLog">informativo</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_StrNombreProceso">Validacion de información a porcesar CORG</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_StrDescripcionLog">Ocurrio un error al validar informacion de pagos a validar para CORG</InArgument>
+                      <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_DtLogs">[io_dtLogs]</InOutArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_StrRobot">[in_Config("vStrNombreRobot").ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_ItemProcesss">
+                        <Literal x:TypeArguments="x:String" Value="" />
+                      </InArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                  </ui:InvokeWorkflowFile>
+                  <Rethrow sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Rethrow_2" />
+                </Sequence>
+              </ActivityAction>
+            </Catch>
+          </TryCatch.Catches>
+        </TryCatch>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,166" sap2010:WorkflowViewState.IdRef="Sequence_39">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:Comment sap:VirtualizedContainerService.HintSize="334,74" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// No se genera envio de colas si hay todavia pendientes" />
+        </Sequence>
+      </If.Else>
+    </If>
+  </Sequence>
+</Activity>
