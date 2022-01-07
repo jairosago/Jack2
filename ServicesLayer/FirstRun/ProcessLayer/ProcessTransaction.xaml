@@ -80,6 +80,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <TryCatch sap2010:Annotation.AnnotationText="##Business Process Layer##&#xA;Description: In this file all other process specific files will be invoked. If an application exception occurs, the current transaction can be retried. If a BRE is thrown, the transaction will be skipped. Can be a flowchart or sequence. " DisplayName="wbProcess" sap:VirtualizedContainerService.HintSize="732,1737.6" sap2010:WorkflowViewState.IdRef="TryCatch_4">
@@ -1730,13 +1731,13 @@
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'angelnetprincipal.exe A...'" sap:VirtualizedContainerService.HintSize="434,252" sap2010:WorkflowViewState.IdRef="WindowScope_2" InformativeScreenshot="c849026c68386453982de5a0a66a5ee7" Selector="&lt;wnd app='angelnetprincipal.exe' ctrlname='frmAsientoPagos' /&gt;">
+                                      <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'angelnetprincipal.exe A...'" sap:VirtualizedContainerService.HintSize="433.6,254.4" sap2010:WorkflowViewState.IdRef="WindowScope_2" InformativeScreenshot="c849026c68386453982de5a0a66a5ee7" Selector="&lt;wnd app='angelnetprincipal.exe' ctrlname='frmAsientoPagos' /&gt;">
                                         <ui:WindowScope.Body>
                                           <ActivityAction x:TypeArguments="x:Object">
                                             <ActivityAction.Argument>
                                               <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                                             </ActivityAction.Argument>
-                                            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" AlterIfDisabled="True" ClickType="CLICK_SINGLE" DisplayName="Click 'push button  Close'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_15" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                                            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" AlterIfDisabled="True" ClickType="CLICK_SINGLE" DisplayName="Click 'push button  Close'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_15" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
                                               <ui:Click.CursorPosition>
                                                 <ui:CursorPosition Position="Center">
                                                   <ui:CursorPosition.OffsetX>
@@ -1758,19 +1759,19 @@
                                           </ActivityAction>
                                         </ui:WindowScope.Body>
                                       </ui:WindowScope>
-                                      <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'angelnetprincipal.exe A...'" sap:VirtualizedContainerService.HintSize="434,1345" sap2010:WorkflowViewState.IdRef="WindowScope_3" InformativeScreenshot="7c842cb962c314c01bce6f045bfbd195" Selector="&lt;wnd app='angelnetprincipal.exe' ctrlname='frmPrincipal' /&gt;">
+                                      <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'angelnetprincipal.exe A...'" sap:VirtualizedContainerService.HintSize="433.6,1350.4" sap2010:WorkflowViewState.IdRef="WindowScope_3" InformativeScreenshot="7c842cb962c314c01bce6f045bfbd195" Selector="&lt;wnd app='angelnetprincipal.exe' ctrlname='frmPrincipal' /&gt;">
                                         <ui:WindowScope.Body>
                                           <ActivityAction x:TypeArguments="x:Object">
                                             <ActivityAction.Argument>
                                               <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                                             </ActivityAction.Argument>
-                                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,1199" sap2010:WorkflowViewState.IdRef="Sequence_87">
+                                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,1203.2" sap2010:WorkflowViewState.IdRef="Sequence_87">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                              <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" AlterIfDisabled="True" ClickType="CLICK_SINGLE" DisplayName="Click 'row header'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_16" KeyModifiers="None" MouseButton="BTN_RIGHT" SendWindowMessages="False" SimulateClick="False">
+                                              <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" AlterIfDisabled="True" ClickType="CLICK_SINGLE" DisplayName="Click 'row header'" sap:VirtualizedContainerService.HintSize="334.4,107.2" sap2010:WorkflowViewState.IdRef="Click_16" KeyModifiers="None" MouseButton="BTN_RIGHT" SendWindowMessages="False" SimulateClick="False">
                                                 <ui:Click.CursorPosition>
                                                   <ui:CursorPosition Position="Center">
                                                     <ui:CursorPosition.OffsetX>
@@ -1967,15 +1968,29 @@
                                             <av:Size x:Key="ShapeSize">200,52.8</av:Size>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke PRC_Identificación_Tipo_Recibo_de_Caja workflow" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ServicesLayer\FirstRun\PRC_Identificación_Tipo_Recibo_de_Caja.xaml">
+                                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke PRC_Identificación_Tipo_Recibo_de_Caja workflow" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ServicesLayer\FirstRun\PRC_Identificación_Tipo_Recibo_de_Caja.xaml">
                                           <ui:InvokeWorkflowFile.Arguments>
-                                            <InArgument x:TypeArguments="x:String" x:Key="in_vStrRutaArchivo">[in_Config(String.Format("Facturas{0}",io_TransactionItem.SpecificContent("Grupo").ToString)).ToString+"\"+io_TransactionItem.SpecificContent("Cliente").ToString+"_"+io_TransactionItem.SpecificContent("Valor Cartera").ToString.Replace(".","_")+".xlsx"]</InArgument>
-                                            <InArgument x:TypeArguments="x:String" x:Key="in_vStrRutaRecibosGestionados">[in_Config(String.Format("Facturas{0}",io_TransactionItem.SpecificContent("Grupo"))).ToString.Replace("Pendientes RC","")+"Recibos Gestionados"]</InArgument>
-                                            <InArgument x:TypeArguments="x:String" x:Key="in_vStrRutaPendientes">[in_Config(String.Format("Facturas{0}",io_TransactionItem.SpecificContent("Grupo"))).ToString.Replace("Pendientes RC","")+"Pendientes"]</InArgument>
-                                            <InArgument x:TypeArguments="x:String" x:Key="in_vStrRutaArchivoGiro">[in_Config("PlantillaGiroArchivo").ToString]</InArgument>
-                                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                                            <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionItem">[io_TransactionItem]</InArgument>
-                                            <InArgument x:TypeArguments="x:String" x:Key="in_StrPathHistoricoGiros">[in_Config("PathHistoricoGiros").ToString]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_vStrRutaArchivo">
+                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(String.Format(&quot;Facturas{0}&quot;,io_TransactionItem.SpecificContent(&quot;Grupo&quot;).ToString)).ToString+&quot;\&quot;+io_TransactionItem.SpecificContent(&quot;Cliente&quot;).ToString+&quot;_&quot;+io_TransactionItem.SpecificContent(&quot;Valor Cartera&quot;).ToString.Replace(&quot;.&quot;,&quot;_&quot;)+&quot;.xlsx&quot;" />
+                                            </InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_vStrRutaRecibosGestionados">
+                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(String.Format(&quot;Facturas{0}&quot;,io_TransactionItem.SpecificContent(&quot;Grupo&quot;))).ToString.Replace(&quot;Pendientes RC&quot;,&quot;&quot;)+&quot;Recibos Gestionados&quot;" />
+                                            </InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_vStrRutaPendientes">
+                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(String.Format(&quot;Facturas{0}&quot;,io_TransactionItem.SpecificContent(&quot;Grupo&quot;))).ToString.Replace(&quot;Pendientes RC&quot;,&quot;&quot;)+&quot;Pendientes&quot;" />
+                                            </InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_vStrRutaArchivoGiro">
+                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;PlantillaGiroArchivo&quot;).ToString" />
+                                            </InArgument>
+                                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                                              <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                                            </InArgument>
+                                            <InArgument x:TypeArguments="ui:QueueItem" x:Key="io_TransactionItem">
+                                              <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="io_TransactionItem" />
+                                            </InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_StrPathHistoricoGiros">
+                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;PathHistoricoGiros&quot;).ToString" />
+                                            </InArgument>
                                           </ui:InvokeWorkflowFile.Arguments>
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
