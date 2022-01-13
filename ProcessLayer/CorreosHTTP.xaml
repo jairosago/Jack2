@@ -1,0 +1,220 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="CorreosHTTP" this:CorreosHTTP.in_StrRobotName="Robtipuven" this:CorreosHTTP.in_StrRobotMail="sergio.sanchez@fouriering.com" this:CorreosHTTP.in_StrSubject="Excepción por diferencia" this:CorreosHTTP.in_StrRecipients="mauricio@fouriering.com" this:CorreosHTTP.in_StrBodyHTML="Está es una prueba del metodo POST &lt;strong&gt;Por favor decirle a Sergio que recibieron este correo&lt;/strong&gt;" this:CorreosHTTP.in_StrEndPoint="http://10.1.22.7/MessengerServices/rest/email/sendMultipleEmailStreamAttachment" this:CorreosHTTP.in_StrUserName="MessengerServiceUser" this:CorreosHTTP.in_StrPassword="4uth0r1V03S3rzv" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_StrRobotName" Type="InArgument(x:String)" />
+    <x:Property Name="in_StrRobotMail" Type="InArgument(x:String)" />
+    <x:Property Name="in_StrSubject" Type="InArgument(x:String)" />
+    <x:Property Name="in_StrRecipients" Type="InArgument(x:String)" />
+    <x:Property Name="in_StrCCRecipients" Type="InArgument(x:String)" />
+    <x:Property Name="in_StrCCORecipients" Type="InArgument(x:String)" />
+    <x:Property Name="in_StrBodyHTML" Type="InArgument(x:String)" />
+    <x:Property Name="in_StrReplyTo" Type="InArgument(x:String)" />
+    <x:Property Name="in_StrAttachmentType" Type="InArgument(x:String)" />
+    <x:Property Name="in_StrAttachmentName" Type="InArgument(x:String)" />
+    <x:Property Name="in_StrPathAttachment" Type="InArgument(x:String)" />
+    <x:Property Name="in_StrEndPoint" Type="InArgument(x:String)" />
+    <x:Property Name="in_StrUserName" Type="InArgument(x:String)" />
+    <x:Property Name="in_StrPassword" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>546,811</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>CorreosHTTP_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="42">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="20">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="CorreosHTTP" sap:VirtualizedContainerService.HintSize="526,751" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="vStrPlantilla" />
+      <Variable x:TypeArguments="s:Byte[]" Name="vArrBytes" />
+      <Variable x:TypeArguments="x:String" Name="vStr64Attachment" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <If Condition="[in_StrPathAttachment IsNot Nothing]" DisplayName="¿Hay archivo adjunto?" sap:VirtualizedContainerService.HintSize="484,400" sap2010:WorkflowViewState.IdRef="If_4">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence DisplayName="Attachment to base64" sap:VirtualizedContainerService.HintSize="304,252" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign DisplayName="vArrBytes" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+            <Assign.To>
+              <OutArgument x:TypeArguments="s:Byte[]">[vArrBytes]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="s:Byte[]">[File.ReadAllBytes(in_StrPathAttachment)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="vStr64Attachment" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[vStr64Attachment]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[Convert.ToBase64String(vArrBytes)]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </If.Then>
+    </If>
+    <Sequence DisplayName="Multiple Attachment" sap:VirtualizedContainerService.HintSize="484,66" sap2010:WorkflowViewState.IdRef="Sequence_4">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign DisplayName="in_StrRecipients" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[in_StrRecipients]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[""""+in_StrRecipients.Replace(";",""",""")+""""]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <If Condition="[in_StrCCRecipients IsNot Nothing]" DisplayName="¿Hay CC?" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="If_5">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <If Condition="[in_StrCCRecipients.Contains(&quot;;&quot;)]" DisplayName="¿Varias copias?" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <Assign DisplayName="in_StrCCRecipients" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[in_StrCCRecipients]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[""""+in_StrCCRecipients.Replace(";",""",""")+""""]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </If.Then>
+          </If>
+        </If.Then>
+      </If>
+      <If Condition="[in_StrCCORecipients IsNot Nothing]" DisplayName="¿Hay CCO?" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="If_6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <If Condition="[in_StrCCORecipients.Contains(&quot;;&quot;)]" DisplayName="¿Varias copias ocultas?" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <Assign DisplayName="in_StrCCORecipients" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[in_StrCCORecipients]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[""""+in_StrCCORecipients.Replace(";",""",""")+""""]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </If.Then>
+          </If>
+        </If.Then>
+      </If>
+    </Sequence>
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim Plantilla As String &#xA;Plantilla=&quot;&lt;p style='font-family:verdana;'&gt;Cordial saludo,&lt;br&gt;&lt;br&gt;&quot; +in_StrMensaje+ &quot;&lt;br&gt;&lt;br&gt;Cordialmente &lt;strong&gt;&quot;+in_StrRobotName+&quot;&lt;/strong&gt;.&lt;/p&gt; &lt;br&gt;&lt;br&gt;&quot;&#xA;out_StrPlantilla=Plantilla" DisplayName="Plantilla Correo" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_StrMensaje">[in_StrBodyHTML]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_StrRobotName">[in_StrRobotName]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_StrPlantilla">[vStrPlantilla]</OutArgument>
+      </ui:InvokeCode.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeCode>
+    <ui:HttpClient ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" ResourcePath="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" StatusCode="{x:Null}" AcceptFormat="ANY" Body="[&quot;{&quot;&quot;senderEmail&quot;&quot;:&quot;&quot;&quot;+in_StrRobotMail+&quot;&quot;&quot;,&quot;&quot;senderName&quot;&quot;:&quot;&quot;&quot;+in_StrRobotName+&quot;&quot;&quot;,&quot;&quot;recipients&quot;&quot;:[&quot;+in_StrRecipients+&quot;],&quot;&quot;cc&quot;&quot;:[&quot;+in_StrCCRecipients+&quot;],&quot;&quot;cco&quot;&quot;:[&quot;+in_StrCCORecipients+&quot;],&quot;&quot;replyTo&quot;&quot;:&quot;&quot;&quot;+in_StrReplyTo+&quot;&quot;&quot;,&quot;&quot;subject&quot;&quot;: &quot;&quot;&quot;+in_StrSubject+&quot;&quot;&quot;,&quot;&quot;message&quot;&quot;: &quot;&quot;&quot;+String.Format(vStrPlantilla)+&quot;&quot;&quot;,&quot;&quot;attachmentStream&quot;&quot; : &quot;&quot;&quot;+vStr64Attachment+&quot;&quot;&quot;,&quot;&quot;attachmentContentType&quot;&quot;:&quot;&quot;&quot;+in_StrAttachmentType+&quot;&quot;&quot;,&quot;&quot;attachmentName&quot;&quot;: &quot;&quot;&quot;+in_StrAttachmentName+&quot;&quot;&quot;}&quot;]" BodyFormat="application/json" ClientCertificate="[Nothing]" ClientCertificatePassword="[Nothing]" DisplayName="HTTP Request" EndPoint="[in_StrEndPoint]" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" Password="[in_StrPassword]" TimeoutMS="6000" Username="[in_StrUserName]">
+      <ui:HttpClient.Attachments>
+        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+      </ui:HttpClient.Attachments>
+      <ui:HttpClient.Cookies>
+        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+      </ui:HttpClient.Cookies>
+      <ui:HttpClient.Headers>
+        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+      </ui:HttpClient.Headers>
+      <ui:HttpClient.Parameters>
+        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+      </ui:HttpClient.Parameters>
+      <ui:HttpClient.UrlSegments>
+        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+      </ui:HttpClient.UrlSegments>
+    </ui:HttpClient>
+  </Sequence>
+</Activity>
